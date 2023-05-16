@@ -22,6 +22,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
 # tweet = 'Layin n bed with a headache  ughhhh...waitin on your call...'
 import joblib
+import pickle
 class emotion_analysis_code():
 
     lem = WordNetLemmatizer()
@@ -64,28 +65,35 @@ class emotion_analysis_code():
 
         tweet_in_pandas = pd.Series(' '.join(self.cleaning(tweet)))
 
-        #path_vec = os.path.join(settings.MODELS, 'vectorizer.pickle')
+        # #path_vec = os.path.join(settings.MODELS, 'vectorizer.pickle')
+        # path_model = os.path.join(settings.MODELS, 'emotion.pkl')
+        # path_vec = os.path.join(settings.MODELS, 'emotions.csv')
         path_model = os.path.join(settings.MODELS, 'emotion.pkl')
+        path_vec = os.path.join(settings.MODELS, 'emotions.csv')
 
-        # load vectorizer
-        # vec_file = 'vectorizer.pickle'
-        #vectorizer = pickle.load(open(path_vec, 'rb'))
+        # # load vectorizer
+        # # vec_file = 'vectorizer.pickle'
+        # vectorizer = pickle.load(open(path_vec, 'rb'))
 
-        # load trained model
-        # filename = 'finalized_model.sav'
-        model = pickle.load(open(path_model, 'rb'))
-        
+        # # load trained model
+        # # filename = 'finalized_model.sav'
+        # model = pickle.load(open(path_model, 'rb'))
+        pipe_lr=joblib.load(open(path_model, "rb"))
+        #df_predict=np.loadtxt(path_vec, skiprows=0)
+        df_predict=pd.read_csv(path_vec)
+        #x_train=df_predict.transform(tweet_in_pandas)
+        text=df_predict['text']
 
-        #test = vectorizer.transform(tweet_in_pandas)
-        predicted_sentiment = model.predict(tweet_in_pandas)
+       # test = vectorizer.transform(tweet_in_pandas)
+        predicted_sentiment = pipe_lr.predict(text)
         final_sentiment = (predicted_sentiment[0])
         if final_sentiment == 'worry':
             return 'Worry'
         elif final_sentiment == 'sadness':
             return 'Sadness'
-        elif final_sentiment == 'happiness':
-            return 'Happiness'
+        elif final_sentiment == 'joy':
+            return 'Joy'
         elif final_sentiment == 'love':
             return 'Love'
-        elif final_sentiment == 'hate':
+        else:
             return 'Hate'

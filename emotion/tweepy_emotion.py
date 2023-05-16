@@ -10,10 +10,10 @@ import pandas as pd
 
 class Import_tweet_emotion:
 
-	consumer_key="user consumer_key"
-	consumer_secret="user consumer_secret"
-	access_token="user access_token"
-	access_token_secret="user access_token_secret"
+	consumer_key="sdO4umqwkloGeh3imVfFnn0VY"
+	consumer_secret="SnUF7lKk3GfwcIqHRYk6l24k862OmwgzkAQCgznvWgTA1O4Upg"
+	access_token="1653253564779872256-yD2AB5cyECSiMq86lbkXPfDhVggtFL"
+	access_token_secret="04gqCfChNn4atNCdppgUaGniSCo2tLZPwTuus12mvgMez"
 
 	def tweet_to_data_frame(self, tweets):
 		df = pd.DataFrame(data=[tweet.text for tweet in tweets], columns=['Tweets'])

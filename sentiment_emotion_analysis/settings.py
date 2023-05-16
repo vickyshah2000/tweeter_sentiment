@@ -77,14 +77,25 @@ WSGI_APPLICATION = 'sentiment_emotion_analysis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-
+# import psycopg2
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'incredible-snipe',
+#         'USER':'admin',
+#         'PASSWORD':'YJznl4OmO6z_NEaYf6wVhSu0378ODk',
+#         'HOST' : 'ap-south-1.6c2ca41c-168b-4cbf-bc99-ffee09411826.aws.ybdb.io',
+#         'PORT': '5433',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
