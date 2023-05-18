@@ -23,7 +23,7 @@ SECRET_KEY = 'g&x!0fjh8c8)e_-z@gs1^lbngvqwk2(o3s(5zg!o&woxdsu_un'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vikasgupta2001.pythonanywhere.com']
 
 consumer_key="22qiCQlKs4P5gWvlUq8dugV9x"
 consumer_secret="39HZvNLHIoMQZ9R6QneCC6A9HHljKrxIMRUGHtcT933lwDbycQ"
